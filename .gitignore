@@ -1,0 +1,21 @@
+# Environment — never commit real API keys
+.env
+/design.md
+/prd.md
+/architecture.md
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# ChromaDB persisted data
+chroma_data/
+
+# Pytest
+.pytest_cache/
+
+# Logs
+*.log

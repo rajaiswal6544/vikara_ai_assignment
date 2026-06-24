@@ -1,0 +1,49 @@
+agents:
+  triage:
+    class: TriageAgent
+    system_prompt_file: prompts/triage.txt
+    routing_rules:
+      technical: TechnicalAgent
+      billing: BillingAgent
+      account: TechnicalAgent
+      general: TechnicalAgent
+      escalation: EscalationAgent
+    max_retries: 1
+
+  technical:
+    class: TechnicalAgent
+    system_prompt_file: prompts/technical.txt
+    kb_collections:
+      - technical
+      - faq
+      - account
+    max_retrieval_chunks: 5
+    escalation_threshold: 3
+
+  billing:
+    class: BillingAgent
+    system_prompt_file: prompts/billing.txt
+    kb_collections:
+      - billing
+      - faq
+    max_retrieval_chunks: 5
+    escalation_threshold: 2
+
+  escalation:
+    class: EscalationAgent
+    system_prompt_file: prompts/escalation.txt
+    priority_rules:
+      critical:
+        - data loss
+        - security breach
+        - outage
+      high:
+        - payment failure
+        - cannot login
+        - production down
+      medium:
+        - billing dispute
+        - integration broken
+      low:
+        - feature request
+        - general inquiry
