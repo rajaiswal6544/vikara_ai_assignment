@@ -6,7 +6,7 @@ uvicorn[standard]==0.32.1
 openai==1.58.1
 
 # RAG pipeline
-chromadb==0.5.23
+chromadb==0.6.3
 rank-bm25==0.2.2
 sentence-transformers==3.3.1
 
